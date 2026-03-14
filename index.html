@@ -1,0 +1,306 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>음반 전문 C2C 중고거래 플랫폼</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #ffffff; --bg2: #f7f6f3; --bg3: #f1f0ec;
+    --border: rgba(55,53,47,0.09); --border2: rgba(55,53,47,0.16);
+    --text: #37352f; --text2: #6b6860; --text3: #9b9a97;
+    --blue-bg: #e8f0fd; --blue: #2e6fda; --blue-border: #b8d0f7;
+    --green-bg: #edf3ec; --green: #2d8a4e; --green-border: #b7d9c2;
+    --yellow-bg: #fef8e7; --yellow: #a0832a; --yellow-border: #f0d882;
+    --red-bg: #fdecea; --red: #c0392b; --red-border: #f5b8b4;
+    --teal-bg: #e8f5f2; --teal: #1a7a5e; --teal-border: #a8ddd0;
+    --purple-bg: #f0ecfd; --purple: #6e4fcf; --purple-border: #cbbff7;
+    --radius: 8px; --radius-lg: 12px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #191919; --bg2: #252525; --bg3: #2f2f2f;
+      --border: rgba(255,255,255,0.07); --border2: rgba(255,255,255,0.13);
+      --text: #e6e5e0; --text2: #9b9a96; --text3: #6b6a66;
+      --blue-bg: #1a2a4a; --blue: #7ab0f5; --blue-border: #2a4a7a;
+      --green-bg: #1a2e22; --green: #6dba8a; --green-border: #2a5040;
+      --yellow-bg: #2e2a14; --yellow: #e0b84a; --yellow-border: #5a4a10;
+      --red-bg: #2e1a1a; --red: #e07070; --red-border: #5a2a2a;
+      --teal-bg: #132420; --teal: #5acfb2; --teal-border: #1e4a40;
+      --purple-bg: #1e1a30; --purple: #b09af0; --purple-border: #3a2a6a;
+    }
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--bg); color: var(--text);
+    line-height: 1.6; font-size: 15px;
+  }
+
+  .page { max-width: 780px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+
+  .hero {
+    border-left: 3px solid var(--text2);
+    padding: 1.4rem 1.6rem;
+    background: var(--bg2);
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+    margin-bottom: 3rem;
+  }
+  .hero-label { font-size: 11px; font-weight: 600; letter-spacing: .1em; color: var(--text3); text-transform: uppercase; margin-bottom: .4rem; }
+  .hero-title { font-size: 28px; font-weight: 700; margin-bottom: .5rem; line-height: 1.25; }
+  .hero-sub { font-size: 14px; color: var(--text2); line-height: 1.7; }
+
+  .section { margin-bottom: 2.8rem; }
+  .section-title {
+    font-size: 11px; font-weight: 600; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--text3);
+    margin-bottom: 1rem; padding-bottom: .45rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 2.2rem 0; }
+
+  /* 문제 카드 */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .card { border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1rem 1.1rem; background: var(--bg); }
+  .card-label { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text3); margin-bottom: .3rem; }
+  .card-title { font-size: 14px; font-weight: 600; margin-bottom: .3rem; }
+  .card-desc { font-size: 12px; color: var(--text2); line-height: 1.6; }
+
+  /* 해결 방안 */
+  .sol-list { display: flex; flex-direction: column; gap: 8px; }
+  .sol-item {
+    display: flex; gap: .85rem; align-items: flex-start;
+    padding: .9rem 1rem; border: 1px solid var(--border);
+    border-radius: var(--radius-lg); background: var(--bg);
+  }
+  .sol-icon {
+    width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; background: var(--bg2);
+  }
+  .sol-title { font-size: 13px; font-weight: 600; margin-bottom: .2rem; }
+  .sol-desc { font-size: 12px; color: var(--text2); line-height: 1.6; }
+
+  /* 기능 테이블 */
+  .feat-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .feat-table th {
+    text-align: left; font-size: 10px; font-weight: 600; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--text3);
+    padding: .4rem .65rem; border-bottom: 1px solid var(--border);
+  }
+  .feat-table td { padding: .55rem .65rem; border-bottom: 1px solid var(--border); color: var(--text2); vertical-align: top; line-height: 1.5; }
+  .feat-table tr:last-child td { border-bottom: none; }
+  .feat-table .cat { font-weight: 600; color: var(--text); white-space: nowrap; font-size: 12px; }
+  .feat-table .name { font-weight: 600; color: var(--text); font-size: 12px; }
+
+  .badge {
+    display: inline-block; font-size: 10px; font-weight: 600;
+    padding: 2px 7px; border-radius: 99px; margin-right: 3px; margin-bottom: 2px; white-space: nowrap;
+    border: 1px solid transparent;
+  }
+  .b-chat   { background: var(--blue-bg);   color: var(--blue);   border-color: var(--blue-border); }
+  .b-search { background: var(--yellow-bg); color: var(--yellow); border-color: var(--yellow-border); }
+  .b-trust  { background: var(--green-bg);  color: var(--green);  border-color: var(--green-border); }
+  .b-alert  { background: var(--red-bg);    color: var(--red);    border-color: var(--red-border); }
+  .b-gray   { background: var(--bg2);       color: var(--text2);  border-color: var(--border2); }
+
+  /* 하이라이트 그리드 */
+  .hl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .hl-card { background: var(--bg2); border-radius: var(--radius); padding: .8rem .95rem; }
+  .hl-label { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text3); margin-bottom: .3rem; }
+  .hl-val { font-size: 13px; font-weight: 600; margin-bottom: .2rem; }
+  .hl-sub { font-size: 11px; color: var(--text2); line-height: 1.5; }
+
+  @media (max-width: 560px) {
+    .grid2, .hl-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-label">프로젝트 소개</div>
+    <div class="hero-title">음반 전문 C2C 중고거래 플랫폼</div>
+    <div class="hero-sub">CD·LP·카세트·DVD 수집가를 위한 버티컬 마켓플레이스. 개인정보 노출 없는 닉네임 기반 실시간 채팅과 음반 특화 필터링으로 오프라인 레코드샵 디깅 경험을 온라인으로.</div>
+  </div>
+
+  <!-- 문제 인식 -->
+  <div class="section">
+    <div class="section-title">문제 인식</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-label">개인정보 노출</div>
+        <div class="card-title">기존 플랫폼의 소통 장벽</div>
+        <div class="card-desc">알라딘·예스24는 실물 사진 요청 시 판매자 연락처로 직접 문자하거나 이메일 Q&amp;A를 이용해야 함. 즉각 소통이 어렵고 개인정보 노출 부담 발생.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">전문성 부족</div>
+        <div class="card-title">종합 C2C의 한계</div>
+        <div class="card-desc">번개장터·당근마켓은 소통은 편하지만 포맷·세부 장르 등 음반 특화 필터가 없어 원하는 매물 탐색 시 무관한 게시글 피로감이 큼.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 해결 방안 -->
+  <div class="section">
+    <div class="section-title">해결 방안</div>
+    <div class="sol-list">
+      <div class="sol-item">
+        <div class="sol-icon">💬</div>
+        <div>
+          <div class="sol-title">닉네임 기반 1:1 실시간 채팅</div>
+          <div class="sol-desc">개인 연락처 교환 없이 앱 내에서 실시간 메시지·사진 전송. 구매자는 실물 사진 요청과 가격 협의를 즉시 진행 가능.</div>
+        </div>
+      </div>
+      <div class="sol-item">
+        <div class="sol-icon">🔍</div>
+        <div>
+          <div class="sol-title">음반 탐색에 최적화된 버티컬 검색</div>
+          <div class="sol-desc">포맷(LP·CD·카세트·DVD)과 대/소분류 장르를 조건으로 하는 다중 필터링. 오프라인 레코드샵에서 디깅하는 듯한 전문적 탐색 경험 제공.</div>
+        </div>
+      </div>
+      <div class="sol-item">
+        <div class="sol-icon">🛡️</div>
+        <div>
+          <div class="sol-title">신뢰 높은 거래 환경 조성</div>
+          <div class="sol-desc">본인인증 완료 사용자만 판매 가능. 토스페이먼츠 API 결제 연동 + 거래 후 상점 리뷰 시스템으로 플랫폼 직접 검수 없이도 사용자 간 자발적 신뢰 형성.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 주요 기능 -->
+  <div class="section">
+    <div class="section-title">주요 기능</div>
+    <table class="feat-table">
+      <thead>
+        <tr><th style="width:15%">분류</th><th style="width:22%">기능</th><th>세부 설명</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cat" rowspan="3">회원·계정</td>
+          <td class="name">소셜 로그인</td>
+          <td>카카오·네이버·구글 연동 간편 가입</td>
+        </tr>
+        <tr>
+          <td class="name">온보딩·프로필</td>
+          <td>닉네임 설정, 상점명·소개·이미지 관리</td>
+        </tr>
+        <tr>
+          <td class="name">계정 설정</td>
+          <td>SNS 연동 관리, 로그아웃, 회원 탈퇴</td>
+        </tr>
+        <tr>
+          <td class="cat" rowspan="4">상품·판매</td>
+          <td class="name">상품 등록</td>
+          <td>이미지 최대 5장, 카테고리·상태·태그 입력</td>
+        </tr>
+        <tr>
+          <td class="name">가격 설정</td>
+          <td>판매가 + <span class="badge b-gray">가격 제안 받기</span> 옵션</td>
+        </tr>
+        <tr>
+          <td class="name">배송·거래 설정</td>
+          <td>배송비 포함/별도, 직거래 가능 여부 및 지역</td>
+        </tr>
+        <tr>
+          <td class="name">상태 관리</td>
+          <td><span class="badge b-gray">판매중</span><span class="badge b-gray">예약중</span><span class="badge b-trust">판매완료</span></td>
+        </tr>
+        <tr>
+          <td class="cat" rowspan="3">검색·탐색</td>
+          <td class="name">통합 검색</td>
+          <td>상품명·상점명·태그·지역명 기반</td>
+        </tr>
+        <tr>
+          <td class="name">카테고리 필터</td>
+          <td><span class="badge b-search">LP</span><span class="badge b-search">CD</span><span class="badge b-search">카세트</span><span class="badge b-search">DVD</span> + 장르 대/소분류</td>
+        </tr>
+        <tr>
+          <td class="name">정렬·필터</td>
+          <td>최신순·인기순·저가/고가순, 상세 필터링</td>
+        </tr>
+        <tr>
+          <td class="cat" rowspan="4">거래·소통</td>
+          <td class="name">1:1 거래톡</td>
+          <td><span class="badge b-chat">실시간</span> 메시지 교환 및 사진 전송</td>
+        </tr>
+        <tr>
+          <td class="name">찜·관심 상품</td>
+          <td>찜하기 + 마이페이지 찜 목록 관리</td>
+        </tr>
+        <tr>
+          <td class="name">팔로우</td>
+          <td>관심 상점 팔로우/언팔로우 + 목록 관리</td>
+        </tr>
+        <tr>
+          <td class="name">상점 후기</td>
+          <td>거래 완료 후 후기 작성 + 판매자 답글</td>
+        </tr>
+        <tr>
+          <td class="cat" rowspan="3">알림·분석</td>
+          <td class="name">실시간 알림</td>
+          <td><span class="badge b-alert">채팅 수신</span> 찜 상품 가격 하락, 팔로우 상점 신규 매물</td>
+        </tr>
+        <tr>
+          <td class="name">활동 알림</td>
+          <td>내 상품 찜 발생, 가격 제안 수신, 새 팔로워</td>
+        </tr>
+        <tr>
+          <td class="name">상점 대시보드</td>
+          <td>오픈일·판매 횟수·방문자 수 등 활동 통계</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 기술 하이라이트 -->
+  <div class="section">
+    <div class="section-title">기술 하이라이트</div>
+    <div class="hl-grid">
+      <div class="hl-card">
+        <div class="hl-label">실시간 채팅</div>
+        <div class="hl-val">1:1 거래톡</div>
+        <div class="hl-sub">닉네임 기반 인앱 채팅. 개인정보 미노출, 사진 전송 지원</div>
+      </div>
+      <div class="hl-card">
+        <div class="hl-label">결제</div>
+        <div class="hl-val">토스페이먼츠 API</div>
+        <div class="hl-sub">본인인증 연동 + 편리한 결제 환경 구축</div>
+      </div>
+      <div class="hl-card">
+        <div class="hl-label">신뢰 시스템</div>
+        <div class="hl-val">인증 + 리뷰</div>
+        <div class="hl-sub">본인인증 판매자만 출품. 거래 후 후기로 자발적 신뢰 형성</div>
+      </div>
+      <div class="hl-card">
+        <div class="hl-label">탐색</div>
+        <div class="hl-val">버티컬 필터링</div>
+        <div class="hl-sub">포맷 + 장르 대/소분류 다중 필터. 음반 특화 디깅 경험</div>
+      </div>
+      <div class="hl-card">
+        <div class="hl-label">알림</div>
+        <div class="hl-val">실시간 + 활동</div>
+        <div class="hl-sub">가격 하락·신규 매물·팔로우 등 맥락 기반 알림</div>
+      </div>
+      <div class="hl-card">
+        <div class="hl-label">통계</div>
+        <div class="hl-val">상점 대시보드</div>
+        <div class="hl-sub">판매 횟수·방문자 수 등 판매자 활동 데이터 제공</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
