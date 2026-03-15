@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -63,14 +62,12 @@
   }
   .divider { border: none; border-top: 1px solid var(--border); margin: 2.2rem 0; }
 
-  /* 문제 카드 */
   .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
   .card { border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1rem 1.1rem; background: var(--bg); }
   .card-label { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text3); margin-bottom: .3rem; }
   .card-title { font-size: 14px; font-weight: 600; margin-bottom: .3rem; }
   .card-desc { font-size: 12px; color: var(--text2); line-height: 1.6; }
 
-  /* 해결 방안 */
   .sol-list { display: flex; flex-direction: column; gap: 8px; }
   .sol-item {
     display: flex; gap: .85rem; align-items: flex-start;
@@ -85,7 +82,6 @@
   .sol-title { font-size: 13px; font-weight: 600; margin-bottom: .2rem; }
   .sol-desc { font-size: 12px; color: var(--text2); line-height: 1.6; }
 
-  /* 기능 테이블 */
   .feat-table { width: 100%; border-collapse: collapse; font-size: 12px; }
   .feat-table th {
     text-align: left; font-size: 10px; font-weight: 600; letter-spacing: .08em;
@@ -108,7 +104,6 @@
   .b-alert  { background: var(--red-bg);    color: var(--red);    border-color: var(--red-border); }
   .b-gray   { background: var(--bg2);       color: var(--text2);  border-color: var(--border2); }
 
-  /* 하이라이트 그리드 */
   .hl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
   .hl-card { background: var(--bg2); border-radius: var(--radius); padding: .8rem .95rem; }
   .hl-label { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text3); margin-bottom: .3rem; }
@@ -123,7 +118,6 @@
 <body>
 <div class="page">
 
-  <!-- Hero -->
   <div class="hero">
     <div class="hero-label">프로젝트 소개</div>
     <div class="hero-title">음반 전문 C2C 중고거래 플랫폼</div>
@@ -168,8 +162,8 @@
       <div class="sol-item">
         <div class="sol-icon">🛡️</div>
         <div>
-          <div class="sol-title">신뢰 높은 거래 환경 조성</div>
-          <div class="sol-desc">본인인증 완료 사용자만 판매 가능. 토스페이먼츠 API 결제 연동 + 거래 후 상점 리뷰 시스템으로 플랫폼 직접 검수 없이도 사용자 간 자발적 신뢰 형성.</div>
+          <div class="sol-title">신뢰 기반 거래 환경 조성</div>
+          <div class="sol-desc">본인인증 완료 사용자만 판매 가능하도록 설계하고, 거래 후 상점 리뷰 시스템을 도입해 플랫폼 직접 검수 없이도 사용자 간 자발적 신뢰가 쌓이는 구조를 만들었습니다.</div>
         </div>
       </div>
     </div>
@@ -229,9 +223,13 @@
           <td>최신순·인기순·저가/고가순, 상세 필터링</td>
         </tr>
         <tr>
-          <td class="cat" rowspan="4">거래·소통</td>
+          <td class="cat" rowspan="5">거래·소통</td>
           <td class="name">1:1 거래톡</td>
           <td><span class="badge b-chat">실시간</span> 메시지 교환 및 사진 전송</td>
+        </tr>
+        <tr>
+          <td class="name">결제</td>
+          <td>토스페이먼츠 API 연동. 금액 검증·중복 결제 방지·결제 완료 후 판매자 알림 처리</td>
         </tr>
         <tr>
           <td class="name">찜·관심 상품</td>
@@ -276,12 +274,12 @@
       <div class="hl-card">
         <div class="hl-label">결제</div>
         <div class="hl-val">토스페이먼츠 API</div>
-        <div class="hl-sub">본인인증 연동 + 편리한 결제 환경 구축</div>
+        <div class="hl-sub">금액 검증·중복 결제 방지·승인 흐름 구현. 결제 완료 시 판매자 SSE 알림 연동</div>
       </div>
       <div class="hl-card">
         <div class="hl-label">신뢰 시스템</div>
         <div class="hl-val">인증 + 리뷰</div>
-        <div class="hl-sub">본인인증 판매자만 출품. 거래 후 후기로 자발적 신뢰 형성</div>
+        <div class="hl-sub">본인인증 판매자만 판매 가능. 거래 후 후기로 자발적 신뢰 형성</div>
       </div>
       <div class="hl-card">
         <div class="hl-label">탐색</div>
