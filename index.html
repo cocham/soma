@@ -37,65 +37,69 @@
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     background: var(--bg); color: var(--text);
-    line-height: 1.6; font-size: 15px;
+    line-height: 1.6; font-size: 18px; /* 15px -> 18px */
   }
 
   .page { max-width: 780px; margin: 0 auto; padding: 3rem 2rem 5rem; }
 
   .hero {
     border-left: 3px solid var(--text2);
-    padding: 1.4rem 1.6rem;
+    padding: 1.5rem 1.8rem;
     background: var(--bg2);
     border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
     margin-bottom: 3rem;
   }
-  .hero-label { font-size: 11px; font-weight: 600; letter-spacing: .1em; color: var(--text3); text-transform: uppercase; margin-bottom: .4rem; }
-  .hero-title { font-size: 28px; font-weight: 700; margin-bottom: .5rem; line-height: 1.25; }
-  .hero-sub { font-size: 14px; color: var(--text2); line-height: 1.7; }
+  .hero-label { font-size: 14px; font-weight: 600; letter-spacing: .1em; color: var(--text3); text-transform: uppercase; margin-bottom: .5rem; }
+  .hero-title { font-size: 32px; font-weight: 700; margin-bottom: .6rem; line-height: 1.25; }
+  .hero-sub { font-size: 18px; color: var(--text2); line-height: 1.7; }
 
   .section { margin-bottom: 2.8rem; }
   .section-title {
-    font-size: 11px; font-weight: 600; letter-spacing: .1em;
+    font-size: 14px; font-weight: 600; letter-spacing: .1em;
     text-transform: uppercase; color: var(--text3);
-    margin-bottom: 1rem; padding-bottom: .45rem;
+    margin-bottom: 1.1rem; padding-bottom: .5rem;
     border-bottom: 1px solid var(--border);
   }
   .divider { border: none; border-top: 1px solid var(--border); margin: 2.2rem 0; }
 
-  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .card { border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1rem 1.1rem; background: var(--bg); }
-  .card-label { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text3); margin-bottom: .3rem; }
-  .card-title { font-size: 14px; font-weight: 600; margin-bottom: .3rem; }
-  .card-desc { font-size: 12px; color: var(--text2); line-height: 1.6; }
+  /* 문제 카드 */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .card { border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.2rem 1.3rem; background: var(--bg); }
+  .card-label { font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text3); margin-bottom: .4rem; }
+  .card-title { font-size: 17px; font-weight: 600; margin-bottom: .4rem; }
+  .card-desc { font-size: 15px; color: var(--text2); line-height: 1.6; }
 
-  .sol-list { display: flex; flex-direction: column; gap: 8px; }
+  /* 해결 방안 */
+  .sol-list { display: flex; flex-direction: column; gap: 10px; }
   .sol-item {
-    display: flex; gap: .85rem; align-items: flex-start;
-    padding: .9rem 1rem; border: 1px solid var(--border);
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 1.1rem 1.2rem; border: 1px solid var(--border);
     border-radius: var(--radius-lg); background: var(--bg);
   }
   .sol-icon {
-    width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+    width: 42px; height: 42px; border-radius: 50%; flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
-    font-size: 15px; background: var(--bg2);
+    font-size: 20px; background: var(--bg2);
   }
-  .sol-title { font-size: 13px; font-weight: 600; margin-bottom: .2rem; }
-  .sol-desc { font-size: 12px; color: var(--text2); line-height: 1.6; }
+  .sol-title { font-size: 16px; font-weight: 600; margin-bottom: .3rem; }
+  .sol-desc { font-size: 15px; color: var(--text2); line-height: 1.6; }
 
-  .feat-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  /* 기능 테이블 */
+  .feat-table { width: 100%; border-collapse: collapse; font-size: 15px; }
   .feat-table th {
-    text-align: left; font-size: 10px; font-weight: 600; letter-spacing: .08em;
+    text-align: left; font-size: 13px; font-weight: 600; letter-spacing: .08em;
     text-transform: uppercase; color: var(--text3);
-    padding: .4rem .65rem; border-bottom: 1px solid var(--border);
+    padding: .6rem .8rem; border-bottom: 1px solid var(--border);
   }
-  .feat-table td { padding: .55rem .65rem; border-bottom: 1px solid var(--border); color: var(--text2); vertical-align: top; line-height: 1.5; }
+  .feat-table td { padding: .7rem .8rem; border-bottom: 1px solid var(--border); color: var(--text2); vertical-align: top; line-height: 1.55; }
   .feat-table tr:last-child td { border-bottom: none; }
-  .feat-table .cat { font-weight: 600; color: var(--text); white-space: nowrap; font-size: 12px; }
-  .feat-table .name { font-weight: 600; color: var(--text); font-size: 12px; }
+  .feat-table .cat { font-weight: 600; color: var(--text); white-space: nowrap; font-size: 15px; }
+  .feat-table .name { font-weight: 600; color: var(--text); font-size: 15px; }
 
+  /* 뱃지 */
   .badge {
-    display: inline-block; font-size: 10px; font-weight: 600;
-    padding: 2px 7px; border-radius: 99px; margin-right: 3px; margin-bottom: 2px; white-space: nowrap;
+    display: inline-block; font-size: 12px; font-weight: 600;
+    padding: 3px 9px; border-radius: 99px; margin-right: 4px; margin-bottom: 3px; white-space: nowrap;
     border: 1px solid transparent;
   }
   .b-chat   { background: var(--blue-bg);   color: var(--blue);   border-color: var(--blue-border); }
@@ -104,11 +108,12 @@
   .b-alert  { background: var(--red-bg);    color: var(--red);    border-color: var(--red-border); }
   .b-gray   { background: var(--bg2);       color: var(--text2);  border-color: var(--border2); }
 
-  .hl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-  .hl-card { background: var(--bg2); border-radius: var(--radius); padding: .8rem .95rem; }
-  .hl-label { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text3); margin-bottom: .3rem; }
-  .hl-val { font-size: 13px; font-weight: 600; margin-bottom: .2rem; }
-  .hl-sub { font-size: 11px; color: var(--text2); line-height: 1.5; }
+  /* 하이라이트 그리드 */
+  .hl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .hl-card { background: var(--bg2); border-radius: var(--radius); padding: 1rem 1.1rem; }
+  .hl-label { font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text3); margin-bottom: .4rem; }
+  .hl-val { font-size: 16px; font-weight: 600; margin-bottom: .3rem; }
+  .hl-sub { font-size: 14px; color: var(--text2); line-height: 1.5; }
 
   @media (max-width: 560px) {
     .grid2, .hl-grid { grid-template-columns: 1fr; }
@@ -124,7 +129,6 @@
     <div class="hero-sub">CD·LP·카세트·DVD 수집가를 위한 버티컬 마켓플레이스. 별도 연락 없이 플랫폼 안에서 바로 소통할 수 있는 실시간 채팅과 음반 특화 필터링으로 오프라인 레코드샵 디깅 경험을 온라인으로.</div>
   </div>
 
-  <!-- 문제 인식 -->
   <div class="section">
     <div class="section-title">문제 인식</div>
     <div class="grid2">
@@ -141,7 +145,6 @@
     </div>
   </div>
 
-  <!-- 해결 방안 -->
   <div class="section">
     <div class="section-title">해결 방안</div>
     <div class="sol-list">
@@ -171,7 +174,6 @@
 
   <hr class="divider">
 
-  <!-- 주요 기능 -->
   <div class="section">
     <div class="section-title">주요 기능</div>
     <table class="feat-table">
@@ -262,7 +264,6 @@
 
   <hr class="divider">
 
-  <!-- 기술 하이라이트 -->
   <div class="section">
     <div class="section-title">기술 하이라이트</div>
     <div class="hl-grid">
